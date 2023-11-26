@@ -11,10 +11,10 @@ jobs:
 
     - stage: Tagging
       script:
-        - docker tag project/udagram-api-feed stleye/udagram-api-feed:v1
-        - docker tag project/udagram-api-user stleye/udagram-api-user:v1
-        - docker tag project/udagram-frontend stleye/udagram-frontend:v1
-        - docker tag project/udagram-reverseproxy stleye/udagram-reverseproxy:v1
+        - docker tag udagram-api-feed stleye/udagram-api-feed:v1
+        - docker tag udagram-api-user stleye/udagram-api-user:v1
+        - docker tag udagram-frontend stleye/udagram-frontend:v1
+        - docker tag udagram-reverseproxy stleye/udagram-reverseproxy:v1
 
     - stage: Push
       script:
