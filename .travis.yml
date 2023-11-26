@@ -1,5 +1,8 @@
 language: minimal
 
+before_script:
+  - cd project
+
 services:
   - docker
 
@@ -7,7 +10,7 @@ jobs:
   include:
     - stage: Build
       script:
-        - docker-compose -f project/docker-compose-build.yaml build --parallel
+        - docker-compose -f docker-compose-build.yaml build --parallel
 
     - stage: Tagging
       script:
