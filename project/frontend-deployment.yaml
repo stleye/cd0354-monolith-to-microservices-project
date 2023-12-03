@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: stleye/udagram-frontend:v2
+        ports:
+        - containerPort: 80  # Adjust the port as per your application requirements
+        env:
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_USERNAME
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_HOST
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: POSTGRES_DB
+        - name: AWS_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: AWS_BUCKET
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: AWS_REGION
+        - name: AWS_PROFILE
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: AWS_PROFILE
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: postgres-secret
+              key: JWT_SECRET
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: postgres-config
+              key: URL

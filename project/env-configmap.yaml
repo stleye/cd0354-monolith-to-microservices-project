@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+data:
+  POSTGRES_HOST: refactormonolithdb.c9ud0tmcnfrx.us-east-1.rds.amazonaws.com
+  POSTGRES_DB: refactormonolithdb
+  AWS_BUCKET: refactorproject-941892831219-dev
+  AWS_REGION: us-east-1
+  AWS_PROFILE: default
+  URL: http://localhost:8100
